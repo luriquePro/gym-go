@@ -4,6 +4,7 @@ import { APP_AMBIENT, NODE_ENV } from "./../enum/env.enum";
 import { z } from "zod";
 import { ENV_VALIDATIONS } from "./../enum/env.enum";
 import { DEFAULT_VALUES } from "./constants";
+import { AppError } from "../errors/AppError";
 
 config({ path: ".env", override: true, quiet: true });
 
@@ -123,6 +124,10 @@ const envSchema = z
     }
   });
 
-export const validateEnv = () => envSchema.parse(process.env);
+const _env = envSchema.safeParse(process.env);
 
-export const env = validateEnv();
+if (!_env.success) {
+  throw AppError.internal("Erro ao validar as variáveis de ambiente", _env.error.format());
+}
+
+export const env = _env.data;
