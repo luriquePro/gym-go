@@ -39,6 +39,7 @@ npm run build
 ## 📱 Checklist
 
 ### Código
+
 - [ ] Meu código segue as diretrizes de estilo do projeto
 - [ ] Realizei auto-revisão do meu código
 - [ ] Comentei código complexo ou difícil de entender
@@ -47,11 +48,13 @@ npm run build
 - [ ] Testes novos e existentes passam localmente
 
 ### Documentação
+
 - [ ] Atualizei a documentação relevante
 - [ ] Comentários no código estão atualizados
 - [ ] README foi atualizado se necessário
 
 ### Commits
+
 - [ ] Commits seguem o padrão [Conventional Commits](https://www.conventionalcommits.org/)
 - [ ] Mensagens de commit estão em português
 - [ ] Cada commit representa uma mudança lógica
@@ -61,19 +64,23 @@ npm run build
 Se aplicável, adicione screenshots ou vídeos para demonstrar as mudanças.
 
 ### Antes
+
 ![Screenshot antes das mudanças](url-da-imagem)
 
 ### Depois
+
 ![Screenshot depois das mudanças](url-da-imagem)
 
 ## 🚀 Deploy
 
 ### Considerações de Deploy
+
 - [ ] Mudanças requerem migração de banco de dados
 - [ ] Variáveis de ambiente foram atualizadas
 - [ ] Configurações de produção foram ajustadas
 
 ### Rollback
+
 Descreva como fazer rollback das mudanças se necessário.
 
 ## 📝 Notas Adicionais
@@ -104,4 +111,5 @@ Adicione qualquer informação adicional que os revisores precisem saber:
 - [ ] Compatibilidade foi mantida
 
 ### Comentários do Review
+
 <!-- O revisor pode adicionar comentários aqui -->

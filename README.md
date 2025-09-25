@@ -1,4 +1,4 @@
-# Gym-Go
+# GymGo
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Fastify](https://img.shields.io/badge/Fastify-202020?style=for-the-badge&logo=fastify&logoColor=white)](https://www.fastify.io/)
@@ -7,7 +7,7 @@
 
 > **Plataforma moderna de gerenciamento de check-ins em academias**
 
-Gym-Go é uma aplicação robusta e escalável para gerenciamento de check-ins em academias, desenvolvida com TypeScript, Fastify e seguindo os princípios SOLID e Clean Architecture. A plataforma oferece uma experiência completa para usuários e administradores de academias.
+GymGo é uma aplicação robusta e escalável para gerenciamento de check-ins em academias, desenvolvida com TypeScript, Fastify e seguindo os princípios SOLID e Clean Architecture. A plataforma oferece uma experiência completa para usuários e administradores de academias.
 
 ## 🚀 Quick Start
 
@@ -91,7 +91,7 @@ npm run dev
 
 ### Princípios Arquiteturais
 
-O Gym-Go segue uma arquitetura robusta baseada em:
+O GymGo segue uma arquitetura robusta baseada em:
 
 - **🏛️ Clean Architecture** - Separação clara de responsabilidades
 - **🎯 Domain-Driven Design** - Foco no domínio de negócio
@@ -225,13 +225,13 @@ Este projeto está licenciado sob a licença ISC - veja o arquivo [LICENSE](LICE
 
 - 📧 **Email**: suporte@gym-go.com
 - 🐛 **Issues**: [GitHub Issues](https://github.com/luriquePro/gym-go/issues)
-- 💬 **Discord**: [Comunidade Gym-Go](https://discord.gg/gym-go)
+- 💬 **Discord**: [Comunidade GymGo](https://discord.gg/gym-go)
 
 ---
 
 <div align="center">
 
-**Feito com ❤️ pela equipe Gym-Go**
+**Feito com ❤️ pela equipe GymGo**
 
 [![GitHub stars](https://img.shields.io/github/stars/luriquePro/gym-go?style=social)](https://github.com/luriquePro/gym-go)
 [![GitHub forks](https://img.shields.io/github/forks/luriquePro/gym-go?style=social)](https://github.com/luriquePro/gym-go/fork)
