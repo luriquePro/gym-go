@@ -1,4 +1,6 @@
 import { FastifyInstance, fastify } from 'fastify';
+import { env } from './shared/config/env';
+
 export class App {
   private app?: FastifyInstance;
   private static instance: App;
@@ -16,7 +18,7 @@ export class App {
     const app = this.createApp();
 
     app
-      .listen({ port: 3333, host: '0.0.0.0' })
+      .listen({ port: env.PORT, host: env.HOST })
       .then((address) => {
         console.log(`Server is running on ${address}`);
       })
@@ -37,9 +39,9 @@ export class App {
       logger: false,
       trustProxy: true,
       bodyLimit: 1 * 1024 * 1024, // 1MB
-      keepAliveTimeout: 5 * 1000,
-      connectionTimeout: 10 * 1000,
-      requestTimeout: 30 * 1000,
+      keepAliveTimeout: 5 * 1000, // 5 seconds
+      connectionTimeout: 10 * 1000, // 10 seconds
+      requestTimeout: 30 * 1000, // 30 seconds
       disableRequestLogging: true,
       routerOptions: {
         maxParamLength: 200,

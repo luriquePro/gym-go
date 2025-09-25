@@ -35,7 +35,3 @@ export const createSecurityConfig = (env: IEnv) => ({
     credentials: env.CORS_CREDENTIALS,
   },
 });
-
-// Função para verificar ambiente
-export const isEnvironment = (env: IEnv, targetEnv: NODE_ENV) =>
-  env.NODE_ENV === targetEnv;
