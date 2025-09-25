@@ -1,5 +1,5 @@
 {
-  "name": "gymgo",
+  "name": "gym-go",
   "version": "1.0.0",
   "description": "Aplicação GymGo para gerenciamento de check-ins em academias.",
   "main": "index.js",
@@ -14,7 +14,7 @@
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix"
   },
   "keywords": [
-    "gymgo",
+    "gym-go",
     "gym",
     "fitness",
     "checkin",
