@@ -1,7 +1,7 @@
 {
-  "name": "GymPass2",
+  "name": "gymgo",
   "version": "1.0.0",
-  "description": "Aplicação estilo GymPass para gerenciamento de check-ins em academias.",
+  "description": "Aplicação GymGo para gerenciamento de check-ins em academias.",
   "main": "index.js",
   "directories": {
     "doc": "docs"
@@ -14,10 +14,12 @@
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix"
   },
   "keywords": [
-    "gympass2",
-    "gympass",
-    "gympass2-style",
-    "gympass2-style-app"
+    "gymgo",
+    "gym",
+    "fitness",
+    "checkin",
+    "academia",
+    "gym-management"
   ],
   "author": "Luiz Henrique",
   "license": "ISC",

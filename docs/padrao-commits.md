@@ -1,4 +1,4 @@
-# Padrão de Commits - GymPass2
+# Padrão de Commits - GymGo
 
 ## Visão Geral
 
@@ -15,6 +15,7 @@ Corpo da mensagem (opcional)
 ```
 
 **Exemplo:**
+
 ```
 ✨ feat(auth): adiciona sistema de autenticação JWT
 
@@ -24,19 +25,19 @@ com refresh token e middleware de validação
 
 ### Tipos de Commit
 
-| Tipo | Emoji | Descrição | Exemplo |
-|------|-------|-----------|---------|
-| `feat` | ✨ | Nova funcionalidade | `feat(auth): adiciona sistema de autenticação JWT` |
-| `fix` | 🐛 | Correção de bug | `fix(api): corrige validação de dados de entrada` |
-| `docs` | 📚 | Documentação | `docs(readme): atualiza instruções de instalação` |
-| `style` | 💄 | Formatação, sem mudança de código | `style(eslint): corrige formatação do código` |
-| `refactor` | ♻️ | Refatoração de código | `refactor(domain): melhora estrutura das entidades` |
-| `test` | 🧪 | Adição ou correção de testes | `test(unit): adiciona testes para service de usuário` |
-| `chore` | 🔧 | Tarefas de manutenção | `chore(deps): atualiza dependências do projeto` |
-| `perf` | ⚡ | Melhoria de performance | `perf(api): otimiza consultas do banco de dados` |
-| `ci` | 👷 | Configuração de CI/CD | `ci(github): adiciona workflow de testes` |
-| `build` | 📦 | Mudanças no sistema de build | `build(webpack): atualiza configuração de bundle` |
-| `revert` | ⏪ | Reversão de commit | `revert: desfaz alterações do commit abc123` |
+| Tipo       | Emoji | Descrição                         | Exemplo                                               |
+| ---------- | ----- | --------------------------------- | ----------------------------------------------------- |
+| `feat`     | ✨    | Nova funcionalidade               | `feat(auth): adiciona sistema de autenticação JWT`    |
+| `fix`      | 🐛    | Correção de bug                   | `fix(api): corrige validação de dados de entrada`     |
+| `docs`     | 📚    | Documentação                      | `docs(readme): atualiza instruções de instalação`     |
+| `style`    | 💄    | Formatação, sem mudança de código | `style(eslint): corrige formatação do código`         |
+| `refactor` | ♻️    | Refatoração de código             | `refactor(domain): melhora estrutura das entidades`   |
+| `test`     | 🧪    | Adição ou correção de testes      | `test(unit): adiciona testes para service de usuário` |
+| `chore`    | 🔧    | Tarefas de manutenção             | `chore(deps): atualiza dependências do projeto`       |
+| `perf`     | ⚡    | Melhoria de performance           | `perf(api): otimiza consultas do banco de dados`      |
+| `ci`       | 👷    | Configuração de CI/CD             | `ci(github): adiciona workflow de testes`             |
+| `build`    | 📦    | Mudanças no sistema de build      | `build(webpack): atualiza configuração de bundle`     |
+| `revert`   | ⏪    | Reversão de commit                | `revert: desfaz alterações do commit abc123`          |
 
 ### Escopos Comuns
 

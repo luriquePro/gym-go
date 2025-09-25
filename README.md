@@ -1,4 +1,4 @@
-# GymPass2
+# GymGo
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Fastify](https://img.shields.io/badge/Fastify-202020?style=for-the-badge&logo=fastify&logoColor=white)](https://www.fastify.io/)
@@ -7,13 +7,13 @@
 
 > **Plataforma moderna de gerenciamento de check-ins em academias**
 
-GymPass2 é uma aplicação robusta e escalável para gerenciamento de check-ins em academias, desenvolvida com TypeScript, Fastify e seguindo os princípios SOLID e Clean Architecture. A plataforma oferece uma experiência completa para usuários e administradores de academias.
+GymGo é uma aplicação robusta e escalável para gerenciamento de check-ins em academias, desenvolvida com TypeScript, Fastify e seguindo os princípios SOLID e Clean Architecture. A plataforma oferece uma experiência completa para usuários e administradores de academias.
 
 ## 🚀 Quick Start
 
 ### Pré-requisitos
 
-- Node.js 18+ 
+- Node.js 18+
 - npm ou yarn
 - PostgreSQL 13+
 
@@ -21,8 +21,8 @@ GymPass2 é uma aplicação robusta e escalável para gerenciamento de check-ins
 
 ```bash
 # Clone o repositório
-git clone https://github.com/seu-usuario/gympass2.git
-cd gympass2
+git clone https://github.com/seu-usuario/gymgo.git
+cd gymgo
 
 # Instale as dependências
 npm install
@@ -36,25 +36,28 @@ npm run dev
 
 ### Scripts Disponíveis
 
-| Script | Descrição |
-|--------|-----------|
-| `npm run dev` | Inicia o servidor de desenvolvimento com hot reload |
-| `npm run build` | Compila o projeto para produção |
-| `npm run start` | Inicia o servidor de produção |
-| `npm run test` | Executa os testes unitários |
-| `npm run test:watch` | Executa os testes em modo watch |
+| Script               | Descrição                                           |
+| -------------------- | --------------------------------------------------- |
+| `npm run dev`        | Inicia o servidor de desenvolvimento com hot reload |
+| `npm run build`      | Compila o projeto para produção                     |
+| `npm run start`      | Inicia o servidor de produção                       |
+| `npm run test`       | Executa os testes unitários                         |
+| `npm run test:watch` | Executa os testes em modo watch                     |
 
 ## 📚 Documentação
 
 ### 📋 Requisitos e Especificações
+
 - **[Requisitos MVP v1.0](./docs/requisitos-mvp-v1.md)** - Especificações da versão inicial
 - **[Requisitos MVP v2.0](./docs/requisitos-mvp-v2.md)** - Evolução com funcionalidades avançadas
 
 ### 🤖 Sistema de Agentes
+
 - **[Padrão de Agentes](./docs/padrao-agentes.md)** - Documentação completa do sistema de agentes
 - **[Padrão de Commits](./docs/padrao-commits.md)** - Convenções de commits do projeto
 
 ### 🏗️ Arquitetura
+
 - **[Clean Architecture](./docs/arquitetura.md)** - Documentação da arquitetura (em desenvolvimento)
 - **[Domain Model](./docs/domain-model.md)** - Modelo de domínio (em desenvolvimento)
 
@@ -63,18 +66,21 @@ npm run dev
 ## ✨ Funcionalidades
 
 ### 🔐 Autenticação e Usuários
+
 - Sistema de cadastro e login seguro
 - Autenticação JWT com refresh tokens
 - Integração com provedores OAuth (Google)
 - Gerenciamento de perfis de usuário
 
 ### 🏋️ Check-ins
+
 - Check-in geolocalizado com validação de proximidade
 - Histórico completo de check-ins
 - Sistema de validação por administradores
 - Notificações em tempo real
 
 ### 🏢 Academias
+
 - Cadastro e gerenciamento de academias
 - Busca por proximidade geográfica
 - Sistema de administração completo
@@ -84,7 +90,7 @@ npm run dev
 
 ### Princípios Arquiteturais
 
-O GymPass2 segue uma arquitetura robusta baseada em:
+O GymGo segue uma arquitetura robusta baseada em:
 
 - **🏛️ Clean Architecture** - Separação clara de responsabilidades
 - **🎯 Domain-Driven Design** - Foco no domínio de negócio
@@ -93,15 +99,15 @@ O GymPass2 segue uma arquitetura robusta baseada em:
 
 ### Stack Tecnológica
 
-| Camada | Tecnologia | Versão |
-|--------|------------|--------|
-| **Runtime** | Node.js | 18+ |
-| **Language** | TypeScript | 5.9+ |
-| **Framework** | Fastify | 5.6+ |
-| **Database** | PostgreSQL | 13+ |
-| **ORM** | Prisma | 5.0+ |
-| **Testing** | Vitest | 1.0+ |
-| **Build** | tsup | 8.5+ |
+| Camada        | Tecnologia | Versão |
+| ------------- | ---------- | ------ |
+| **Runtime**   | Node.js    | 18+    |
+| **Language**  | TypeScript | 5.9+   |
+| **Framework** | Fastify    | 5.6+   |
+| **Database**  | PostgreSQL | 13+    |
+| **ORM**       | Prisma     | 5.0+   |
+| **Testing**   | Vitest     | 1.0+   |
+| **Build**     | tsup       | 8.5+   |
 
 ### Estrutura do Projeto
 
@@ -131,20 +137,21 @@ src/
 
 O projeto utiliza um sistema inovador de agentes especializados para automatizar diferentes aspectos do desenvolvimento:
 
-| Agente | Responsabilidade |
-|--------|------------------|
+| Agente                | Responsabilidade                           |
+| --------------------- | ------------------------------------------ |
 | **Backend Developer** | Desenvolvimento de funcionalidades backend |
-| **Commits** | Gerenciamento de commits e versionamento |
-| **Correção de Bugs** | Identificação e correção de problemas |
-| **Implementador** | Implementação de funcionalidades |
-| **Planejador** | Planejamento e organização de tarefas |
-| **Refatorador** | Melhoria e refatoração de código |
-| **Revisor** | Revisão de código e qualidade |
-| **Testes** | Criação e manutenção de testes |
+| **Commits**           | Gerenciamento de commits e versionamento   |
+| **Correção de Bugs**  | Identificação e correção de problemas      |
+| **Implementador**     | Implementação de funcionalidades           |
+| **Planejador**        | Planejamento e organização de tarefas      |
+| **Refatorador**       | Melhoria e refatoração de código           |
+| **Revisor**           | Revisão de código e qualidade              |
+| **Testes**            | Criação e manutenção de testes             |
 
 ## 📋 Roadmap
 
 ### 🎯 MVP v1.0 (Atual)
+
 - [x] Estrutura base do projeto
 - [x] Sistema de agentes
 - [x] Configuração TypeScript
@@ -153,6 +160,7 @@ O projeto utiliza um sistema inovador de agentes especializados para automatizar
 - [ ] Sistema de check-ins
 
 ### 🚀 MVP v2.0 (Próximo)
+
 - [ ] Integração com Google OAuth
 - [ ] Sistema de notificações
 - [ ] Dashboard administrativo
@@ -160,6 +168,7 @@ O projeto utiliza um sistema inovador de agentes especializados para automatizar
 - [ ] Testes automatizados
 
 ### 🌟 Futuro
+
 - [ ] Mobile app (React Native)
 - [ ] Sistema de pagamentos
 - [ ] Analytics avançado
@@ -209,17 +218,17 @@ Este projeto está licenciado sob a licença ISC - veja o arquivo [LICENSE](LICE
 
 ## 📞 Suporte
 
-- 📧 **Email**: suporte@gympass2.com
-- 🐛 **Issues**: [GitHub Issues](https://github.com/seu-usuario/gympass2/issues)
-- 💬 **Discord**: [Comunidade GymPass2](https://discord.gg/gympass2)
+- 📧 **Email**: suporte@gymgo.com
+- 🐛 **Issues**: [GitHub Issues](https://github.com/seu-usuario/gymgo/issues)
+- 💬 **Discord**: [Comunidade GymGo](https://discord.gg/gymgo)
 
 ---
 
 <div align="center">
 
-**Feito com ❤️ pela equipe GymPass2**
+**Feito com ❤️ pela equipe GymGo**
 
-[![GitHub stars](https://img.shields.io/github/stars/seu-usuario/gympass2?style=social)](https://github.com/seu-usuario/gympass2)
-[![GitHub forks](https://img.shields.io/github/forks/seu-usuario/gympass2?style=social)](https://github.com/seu-usuario/gympass2/fork)
+[![GitHub stars](https://img.shields.io/github/stars/seu-usuario/gymgo?style=social)](https://github.com/seu-usuario/gymgo)
+[![GitHub forks](https://img.shields.io/github/forks/seu-usuario/gymgo?style=social)](https://github.com/seu-usuario/gymgo/fork)
 
 </div>
