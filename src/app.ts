@@ -40,8 +40,10 @@ export class App {
       keepAliveTimeout: 5 * 1000,
       connectionTimeout: 10 * 1000,
       requestTimeout: 30 * 1000,
-      maxParamLength: 200,
-      disableRequestLogging: true
+      disableRequestLogging: true,
+      routerOptions: {
+        maxParamLength: 200
+      }
     });
 
     return this.app;
