@@ -1,10 +1,10 @@
 import { config } from 'dotenv';
 
-import { APP_AMBIENT, NODE_ENV } from './../enum/env.enum';
+import { DEFAULT_VALUES } from '@/shared/config/constants';
+import { APP_AMBIENT, ENV_VALIDATIONS, NODE_ENV } from '@/shared/enum/env.enum';
+import { AppError } from '@/shared/errors/AppError';
+
 import { z } from 'zod';
-import { ENV_VALIDATIONS } from './../enum/env.enum';
-import { DEFAULT_VALUES } from './constants';
-import { AppError } from '../errors/AppError';
 
 config({ path: '.env', override: true, quiet: true });
 

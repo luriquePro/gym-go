@@ -1,5 +1,5 @@
-import { APP_AMBIENT, NODE_ENV } from '../enum/env.enum';
-import { IEnv } from '../interface/env.interface';
+import { APP_AMBIENT, NODE_ENV } from '@/shared/enum/env.enum';
+import { IEnv } from '@/shared/interface/env.interface';
 
 export const DEFAULT_VALUES = {
   NODE_ENV: NODE_ENV.DEVELOPMENT,

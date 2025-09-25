@@ -25,14 +25,14 @@
     "noUncheckedIndexedAccess": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "baseUrl": "./src",
+    "baseUrl": "./",
     "paths": {
-      "@/*": ["*"],
-      "@/domain/*": ["domain/*"],
-      "@/application/*": ["application/*"],
-      "@/infrastructure/*": ["infrastructure/*"],
-      "@/presentation/*": ["presentation/*"],
-      "@/shared/*": ["shared/*"]
+      "@/*": ["./src/*"],
+      "@/domain/*": ["./src/domain/*"],
+      "@/application/*": ["./src/application/*"],
+      "@/infrastructure/*": ["./src/infrastructure/*"],
+      "@/presentation/*": ["./src/presentation/*"],
+      "@/shared/*": ["./src/shared/*"]
     }
   },
   "include": ["src/**/*"],
