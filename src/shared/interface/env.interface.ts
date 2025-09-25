@@ -1,4 +1,4 @@
-import { NODE_ENV } from "../enum/env.enum";
+import { NODE_ENV } from '../enum/env.enum';
 
 export interface IEnv {
   NODE_ENV: NODE_ENV;

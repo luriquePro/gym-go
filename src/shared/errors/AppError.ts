@@ -8,7 +8,12 @@ export class AppError extends Error {
   public readonly timestamp: Date;
   public readonly context?: Record<string, unknown>;
 
-  constructor(message: string, statusCode: number = 500, isOperational: boolean = true, context?: Record<string, unknown>) {
+  constructor(
+    message: string,
+    statusCode: number = 500,
+    isOperational: boolean = true,
+    context?: Record<string, unknown>,
+  ) {
     super(message);
 
     this.name = this.constructor.name;
@@ -24,42 +29,60 @@ export class AppError extends Error {
   /**
    * Cria um erro de validação
    */
-  static validation(message: string, context?: Record<string, unknown>): AppError {
+  static validation(
+    message: string,
+    context?: Record<string, unknown>,
+  ): AppError {
     return new AppError(message, 400, true, context);
   }
 
   /**
    * Cria um erro de não encontrado
    */
-  static notFound(message: string = "Recurso não encontrado", context?: Record<string, unknown>): AppError {
+  static notFound(
+    message: string = 'Recurso não encontrado',
+    context?: Record<string, unknown>,
+  ): AppError {
     return new AppError(message, 404, true, context);
   }
 
   /**
    * Cria um erro de não autorizado
    */
-  static unauthorized(message: string = "Não autorizado", context?: Record<string, unknown>): AppError {
+  static unauthorized(
+    message: string = 'Não autorizado',
+    context?: Record<string, unknown>,
+  ): AppError {
     return new AppError(message, 401, true, context);
   }
 
   /**
    * Cria um erro de proibido
    */
-  static forbidden(message: string = "Acesso negado", context?: Record<string, unknown>): AppError {
+  static forbidden(
+    message: string = 'Acesso negado',
+    context?: Record<string, unknown>,
+  ): AppError {
     return new AppError(message, 403, true, context);
   }
 
   /**
    * Cria um erro de conflito
    */
-  static conflict(message: string, context?: Record<string, unknown>): AppError {
+  static conflict(
+    message: string,
+    context?: Record<string, unknown>,
+  ): AppError {
     return new AppError(message, 409, true, context);
   }
 
   /**
    * Cria um erro interno do servidor
    */
-  static internal(message: string = "Erro interno do servidor", context?: Record<string, unknown>): AppError {
+  static internal(
+    message: string = 'Erro interno do servidor',
+    context?: Record<string, unknown>,
+  ): AppError {
     return new AppError(message, 500, false, context);
   }
 
@@ -74,7 +97,7 @@ export class AppError extends Error {
       isOperational: this.isOperational,
       timestamp: this.timestamp.toISOString(),
       context: this.context,
-      stack: this.stack
+      stack: this.stack,
     };
   }
 }

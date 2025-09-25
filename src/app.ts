@@ -1,4 +1,4 @@
-import { FastifyInstance, fastify } from "fastify";
+import { FastifyInstance, fastify } from 'fastify';
 export class App {
   private app?: FastifyInstance;
   private static instance: App;
@@ -16,7 +16,7 @@ export class App {
     const app = this.createApp();
 
     app
-      .listen({ port: 3333, host: "0.0.0.0" })
+      .listen({ port: 3333, host: '0.0.0.0' })
       .then((address) => {
         console.log(`Server is running on ${address}`);
       })
@@ -42,8 +42,8 @@ export class App {
       requestTimeout: 30 * 1000,
       disableRequestLogging: true,
       routerOptions: {
-        maxParamLength: 200
-      }
+        maxParamLength: 200,
+      },
     });
 
     return this.app;
