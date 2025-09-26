@@ -42,6 +42,7 @@ export default tseslint.config(
       '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
       '@typescript-eslint/no-non-null-assertion': 'off',
       '@typescript-eslint/unbound-method': 'off',
+      '@typescript-eslint/no-misused-promises': 'off',
       'prettier/prettier': ['error', { endOfLine: 'auto' }],
       'import/order': [
         'off',
