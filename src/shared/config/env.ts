@@ -41,9 +41,9 @@ const envSchema = z
     // Database
     DB_URI: z
       .url('DB_URI deve ser uma URL')
-      .startsWith('mongodb://', 'DB_URI deve ser uma URL Válida')
+      .startsWith('postgresql://', 'DB_URI deve ser uma URL Válida')
       .or(
-        z.url().startsWith('mongodb+srv://', 'DB_URI deve ser uma URL Válida'),
+        z.url().startsWith('postgresql:\\', 'DB_URI deve ser uma URL Válida'),
       ),
     DB_NAME: z.string('DB_NAME deve ser uma string'),
     REDIS_URL: z
