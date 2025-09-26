@@ -25,6 +25,7 @@ Restrições
 - NUNCA usar `git add .`
 - NUNCA usar `git push` (apenas quando solicitado explicitamente)
 - SEMPRE especificar arquivos individualmente no `git add`
+- SEMPRE executar validação automática antes do commit
 
 Entregáveis
 
@@ -58,10 +59,11 @@ Fluxo
 3. Definir escopo quando relevante
 4. Escrever descrição clara em português
 5. VERIFICAR se precisa de múltiplos commits (ver seção "Identificação de Múltiplos Commits")
-6. Executar git add com arquivos específicos
-7. MOSTRAR mensagem de commit para confirmação do usuário
-8. Fazer commit APENAS após confirmação
-9. Explicar o que foi commitado
+6. Executar validação automática (formatação + linting)
+7. Executar git add com arquivos específicos
+8. MOSTRAR mensagem de commit para confirmação do usuário
+9. Fazer commit APENAS após confirmação
+10. Explicar o que foi commitado
 
 Identificação de Múltiplos Commits
 SEMPRE verificar se as mudanças podem ser separadas em commits distintos:
@@ -117,13 +119,22 @@ Exemplo de uso:
 ⏪ revert: desfaz commit abc123
 ```
 
+Validação Automática
+
+ANTES de fazer qualquer commit, SEMPRE executar:
+
+1. `npm run format` - Formata o código automaticamente
+2. `npm run lint` - Verifica e corrige erros de linting
+3. Se houver erros de linting que não podem ser corrigidos automaticamente, informar ao usuário
+
 Exemplo de fluxo completo:
 
 1. Análise: "Identifico adição de AppError.ts e correções em env.ts"
-2. Verificação: "Preciso de 2 commits: um para AppError e outro para correções"
-3. Primeiro commit: "✨ feat(errors): adiciona classe AppError"
-4. Confirmação: "Confirma este commit? (s/n)"
-5. Execução após confirmação
-6. Segundo commit: "🐛 fix(config): melhora validação de ambiente"
-7. Confirmação: "Confirma este commit? (s/n)"
-8. Execução após confirmação
+2. Validação: "Executando formatação e linting..."
+3. Verificação: "Preciso de 2 commits: um para AppError e outro para correções"
+4. Primeiro commit: "✨ feat(errors): adiciona classe AppError"
+5. Confirmação: "Confirma este commit? (s/n)"
+6. Execução após confirmação
+7. Segundo commit: "🐛 fix(config): melhora validação de ambiente"
+8. Confirmação: "Confirma este commit? (s/n)"
+9. Execução após confirmação

@@ -11,7 +11,11 @@
     "build": "tsup src/server.ts --format cjs --dts --clean",
     "start": "node dist/server.js",
     "format": "prettier --write \"src/**/*.ts\"",
-    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix"
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+    "validate": "tsx scripts/validate.ts",
+    "validate:format": "tsx scripts/validate.ts format",
+    "validate:lint": "tsx scripts/validate.ts lint",
+    "prepare": "husky"
   },
   "keywords": [
     "gym-go",
@@ -32,6 +36,7 @@
     "eslint-plugin-import": "2.32.0",
     "eslint-plugin-jest": "29.0.1",
     "eslint-plugin-prettier": "5.5.4",
+    "husky": "9.1.7",
     "prettier": "3.6.2",
     "prisma": "6.16.2",
     "tsup": "8.5.0",

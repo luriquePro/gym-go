@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Validação pré-commit simplificada
+echo "🔒 Executando validação pré-commit..."
+
+# Executa formatação
+echo "🔧 Formatando código..."
+npm run format
+
+# Executa linting e falha se houver erros
+echo "🔍 Verificando linting..."
+npm run lint
+
+echo "✅ Validação pré-commit concluída!"
