@@ -1,0 +1,17 @@
+services:
+  db:
+    image: postgres:16
+    container_name: ${DB_NAME}_postgres
+    restart: always
+    shm_size: 128mb
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: root
+      POSTGRES_USER: root
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - 5432:5432
+
+volumes:
+  postgres_data:
