@@ -12,9 +12,6 @@
     "start": "node dist/server.js",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
-    "validate": "tsx scripts/validate.ts",
-    "validate:format": "tsx scripts/validate.ts format",
-    "validate:lint": "tsx scripts/validate.ts lint",
     "prepare": "husky"
   },
   "keywords": [
