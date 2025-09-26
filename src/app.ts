@@ -1,53 +1,49 @@
-import { FastifyInstance, fastify } from 'fastify';
+import { ServerAdapterFactory } from './shared/adapters/factories/server-adapter.factory';
 import { env } from './shared/config/env';
+import { IServerAdapter } from './shared/interface/server-adapter.interface';
 
 export class App {
-  private app?: FastifyInstance;
+  private serverAdapter: IServerAdapter;
   private static instance: App;
 
-  private constructor() {}
+  private constructor(serverAdapter?: IServerAdapter) {
+    this.serverAdapter = serverAdapter || ServerAdapterFactory.createDefault();
+  }
 
-  public static getInstance(): App {
+  public static getInstance(serverAdapter?: IServerAdapter): App {
     if (!App.instance) {
-      App.instance = new App();
+      App.instance = new App(serverAdapter);
     }
     return App.instance;
   }
 
-  public start(): void {
-    const app = this.createApp();
-
-    app
-      .listen({ port: env.PORT, host: env.HOST })
-      .then((address) => {
-        console.log(`Server is running on ${address}`);
-      })
-      .catch((err) => {
-        console.error(err);
-        process.exit(1);
-      });
-  }
-
-  public stop(): void {
-    if (this.app) {
-      this.app.close();
+  public async start(): Promise<void> {
+    try {
+      await this.serverAdapter.start(env.PORT, env.HOST);
+    } catch (error) {
+      console.error('❌ Erro ao iniciar aplicação:', error);
+      process.exit(1);
     }
   }
 
-  private createApp(): FastifyInstance {
-    this.app = fastify({
-      logger: false,
-      trustProxy: true,
-      bodyLimit: 1 * 1024 * 1024, // 1MB
-      keepAliveTimeout: 5 * 1000, // 5 seconds
-      connectionTimeout: 10 * 1000, // 10 seconds
-      requestTimeout: 30 * 1000, // 30 seconds
-      disableRequestLogging: true,
-      routerOptions: {
-        maxParamLength: 200,
-      },
-    });
+  public async stop(): Promise<void> {
+    try {
+      await this.serverAdapter.stop();
+    } catch (error) {
+      console.error('❌ Erro ao parar aplicação:', error);
+      throw error;
+    }
+  }
 
-    return this.app;
+  public isRunning(): boolean {
+    return this.serverAdapter.isRunning();
+  }
+
+  public getServerAdapter(): IServerAdapter {
+    return this.serverAdapter;
+  }
+
+  public getServerInstance(): any {
+    return this.serverAdapter.getInstance();
   }
 }

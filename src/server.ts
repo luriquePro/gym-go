@@ -1,26 +1,52 @@
-import { App } from '@/app';
-import { PrismaClient } from '@prisma/client';
+import { App } from './app';
+import { ServerAdapterFactory } from './shared/adapters/factories/server-adapter.factory';
+import prisma from './shared/adapters/prisma';
 
-const app = App.getInstance();
+async function bootstrap() {
+  const app = App.getInstance(
+    ServerAdapterFactory.create(ServerAdapterFactory.ADAPTER_TYPES.FASTIFY),
+  );
 
-// console.log(env);
-app.start();
+  try {
+    await app.start();
 
-const prisma = new PrismaClient();
-prisma.user
-  .aggregate({
-    _count: true,
-  })
-  .then(({ _count }) => {
-    console.log(_count);
-  });
+    if (!app.isRunning()) {
+      throw new Error('Servidor não está rodando');
+    }
 
-process.on('SIGINT', () => {
-  app.stop();
-  process.exit(0);
-});
+    const userCount = await prisma.user.aggregate({
+      _count: true,
+    });
+    console.log(`📊 Total de usuários no banco: ${userCount._count}`);
 
-process.on('SIGTERM', () => {
-  app.stop();
-  process.exit(0);
-});
+    setupGracefulShutdown(app);
+  } catch (error) {
+    console.error('❌ Erro ao inicializar aplicação:', error);
+    process.exit(1);
+  }
+}
+
+function setupGracefulShutdown(app: App) {
+  const shutdown = async (signal: string) => {
+    console.log(
+      `\n🛑 Recebido sinal ${signal}. Iniciando shutdown graceful...`,
+    );
+
+    try {
+      await app.stop();
+      await prisma.$disconnect();
+      console.log('✅ Aplicação finalizada com sucesso');
+      process.exit(0);
+    } catch (error) {
+      console.error('❌ Erro durante shutdown:', error);
+      process.exit(1);
+    }
+  };
+
+  process.on('SIGINT', () => shutdown('SIGINT'));
+  process.on('SIGTERM', () => shutdown('SIGTERM'));
+  process.on('SIGQUIT', () => shutdown('SIGQUIT'));
+}
+
+// Inicia a aplicação
+bootstrap();
