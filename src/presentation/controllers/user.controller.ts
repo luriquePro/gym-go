@@ -1,4 +1,4 @@
-import { CreateUserUseCase } from '@/application/use-cases/create-user.use-case';
+import { CreateUserUseCase } from '@/application/use-cases/user/create-user.use-case';
 import { ApiResponseUtil } from '@/shared/utils/api-response.util';
 import { CreateUserValidation } from '@/shared/validation/schemas/user.schema';
 import { FastifyReply, FastifyRequest } from 'fastify';

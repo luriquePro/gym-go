@@ -2,8 +2,7 @@ import { IHasher } from '@/application/interfaces/hasher.interface';
 import { IUserRepository } from '@/domain/repositories/user-repository.interface';
 import { AppError } from '@/shared/errors/AppError';
 import { CreateUserValidation } from '@/shared/validation/schemas/user.schema';
-import { User } from '@prisma/client';
-import { ICreatedUserResponse } from '../interfaces/user.interface';
+import { ICreatedUserResponse } from '../../interfaces/user.interface';
 
 export class CreateUserUseCase {
   constructor(
@@ -11,14 +10,18 @@ export class CreateUserUseCase {
     private readonly hasher: IHasher,
   ) {}
 
-  async execute(data: CreateUserValidation): Promise<ICreatedUserResponse> {
-    await this.getUserByEmailOrThrow(data.email);
+  async execute({
+    name,
+    email,
+    password,
+  }: CreateUserValidation): Promise<ICreatedUserResponse> {
+    await this.checkIfEmailIsAlreadyInUse(email);
 
-    const hashedPassword = await this.hasher.hash(data.password);
+    const hashedPassword = await this.hasher.hash(password);
 
     const createdUser = await this.userRepository.create({
-      name: data.name,
-      email: data.email,
+      name: name,
+      email: email,
       password: hashedPassword,
     });
 
@@ -29,10 +32,8 @@ export class CreateUserUseCase {
     };
   }
 
-  private async getUserByEmailOrThrow(email: string): Promise<User> {
-    const user = await this.userRepository.findByEmail(email);
-    if (!user) throw AppError.validation('Usuário não encontrado');
-
-    return user;
+  private async checkIfEmailIsAlreadyInUse(email: string): Promise<void> {
+    const exists = await this.userRepository.existsByEmail(email);
+    if (exists) throw AppError.conflict('Email já está em uso', { email });
   }
 }

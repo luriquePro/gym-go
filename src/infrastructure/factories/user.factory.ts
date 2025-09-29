@@ -1,5 +1,5 @@
 import { IHasher } from '@/application/interfaces/hasher.interface';
-import { CreateUserUseCase } from '@/application/use-cases/create-user.use-case';
+import { CreateUserUseCase } from '@/application/use-cases/user/create-user.use-case';
 import { IUserRepository } from '@/domain/repositories/user-repository.interface';
 import { UserRepository } from '@/infrastructure/repositories/user.repository';
 import { BcryptHasher } from '@/infrastructure/security/bcrypt.hasher';
