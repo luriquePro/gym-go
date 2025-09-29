@@ -7,7 +7,9 @@ import { ApiResponseUtil } from '../utils/api-response.util';
  * Intercepta todos os erros automaticamente com tratamento dinâmico
  */
 export function errorHandler(
-  error: FastifyError,
+  error: FastifyError & {
+    context?: { validation?: Array<{ field: string; message: string }> };
+  },
   request: FastifyRequest,
   reply: FastifyReply,
 ) {
@@ -20,26 +22,16 @@ export function errorHandler(
     },
   ];
 
-  // Se for um AppError (erro de negócio)
-  if (error instanceof AppError) {
-    return ApiResponseUtil.businessError(
-      reply,
-      error.message,
-      error.statusCode,
-      errorDetails,
-    );
-  }
-
   // Se for um erro de validação do Zod (já tratado pelo middleware de validação)
   if (
     error.statusCode === 400 &&
-    error.message.includes('Dados de entrada inválidos')
+    error.message.includes('Dados de entrada inválidos') &&
+    error.context
   ) {
     const details =
-      error.validation?.map((err) => ({
-        field: err.instancePath || err.schemaPath || 'unknown',
+      error.context.validation?.map((err) => ({
+        field: err.field,
         message: err.message || 'Erro de validação',
-        code: err.keyword || 'validation_error',
       })) || [];
 
     return ApiResponseUtil.validationError(reply, error.message, details);
@@ -57,6 +49,16 @@ export function errorHandler(
       reply,
       'Dados de entrada inválidos',
       details,
+    );
+  }
+
+  // Se for um AppError (erro de negócio)
+  if (error instanceof AppError) {
+    return ApiResponseUtil.businessError(
+      reply,
+      error.message,
+      error.statusCode,
+      errorDetails,
     );
   }
 
