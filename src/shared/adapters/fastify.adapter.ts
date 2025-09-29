@@ -1,7 +1,9 @@
+import { registerAllRoutes } from '@/presentation/routes';
+import { env } from '@/shared/config/env';
+import { NODE_ENV } from '@/shared/enum/env.enum';
+import { IServerAdapter } from '@/shared/interface/server-adapter.interface';
+import { errorHandler } from '@/shared/middleware/error.middleware';
 import { FastifyInstance, fastify } from 'fastify';
-import { env } from '../config/env';
-import { NODE_ENV } from '../enum/env.enum';
-import { IServerAdapter } from '../interface/server-adapter.interface';
 
 /**
  * Adapter para Fastify seguindo o padrão Adapter
@@ -95,7 +97,7 @@ export class FastifyAdapter implements IServerAdapter {
     const isDevelopment = env['NODE_ENV'] === NODE_ENV.DEVELOPMENT;
     const isProduction = env['NODE_ENV'] === NODE_ENV.PRODUCTION;
 
-    return fastify({
+    const server = fastify({
       logger: isDevelopment
         ? { level: 'info' }
         : isProduction
@@ -115,6 +117,22 @@ export class FastifyAdapter implements IServerAdapter {
         },
       }),
     });
+
+    // Registra error handler global
+    server.setErrorHandler(errorHandler);
+
+    // Registra rotas automaticamente
+    this.registerAllRoutes(server);
+
+    return server;
+  }
+
+  /**
+   * Registra todas as rotas da aplicação
+   */
+  private async registerAllRoutes(server: FastifyInstance): Promise<void> {
+    // Importa e registra todas as rotas organizadas por versão
+    await registerAllRoutes(server);
   }
 
   /**
