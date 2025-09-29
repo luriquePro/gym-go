@@ -37,6 +37,9 @@ const envSchema = z
       )
       .default(DEFAULT_VALUES.PORT),
     HOST: z.string('HOST deve ser uma string').default(DEFAULT_VALUES.HOST),
+    LOGGER_IS_ENABLED: z
+      .boolean('LOGGER_IS_ENABLED deve ser um booleano')
+      .default(DEFAULT_VALUES.LOGGER_IS_ENABLED),
 
     // Database
     DB_URI: z

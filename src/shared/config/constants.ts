@@ -6,6 +6,7 @@ export const DEFAULT_VALUES = {
   APP_AMBIENT: APP_AMBIENT.DEVELOPMENT,
   PORT: 3333,
   HOST: '0.0.0.0',
+  LOGGER_IS_ENABLED: false,
   DB_URI: 'mongodb://localhost:27017/gym-go',
   DB_NAME: 'gym-go',
   REDIS_URL: 'redis://localhost:6379',

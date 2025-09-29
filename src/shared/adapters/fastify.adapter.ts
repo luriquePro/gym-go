@@ -97,12 +97,15 @@ export class FastifyAdapter implements IServerAdapter {
     const isDevelopment = env['NODE_ENV'] === NODE_ENV.DEVELOPMENT;
     const isProduction = env['NODE_ENV'] === NODE_ENV.PRODUCTION;
 
+    const isLoggerEnabled = env['LOGGER_IS_ENABLED'];
+
     const server = fastify({
-      logger: isDevelopment
-        ? { level: 'info' }
-        : isProduction
-          ? { level: 'warn' }
-          : false,
+      logger:
+        isDevelopment && isLoggerEnabled
+          ? { level: 'info' }
+          : isProduction && isLoggerEnabled
+            ? { level: 'warn' }
+            : false,
       trustProxy: true,
       bodyLimit: 1 * 1024 * 1024, // 1MB
       keepAliveTimeout: 5 * 1000, // 5 seconds
