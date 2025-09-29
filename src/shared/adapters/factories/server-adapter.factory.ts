@@ -1,7 +1,7 @@
+import { FastifyAdapter } from '@/shared/adapters/fastify.adapter';
 import { env } from '@/shared/config/env';
 import { NODE_ENV } from '@/shared/enum/env.enum';
-import { IServerAdapter } from '../../interface/server-adapter.interface';
-import { FastifyAdapter } from '../fastify.adapter';
+import { IServerAdapter } from '@/shared/interface/server-adapter.interface';
 
 export class ServerAdapterFactory {
   public static readonly ADAPTER_TYPES = {
