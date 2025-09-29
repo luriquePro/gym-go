@@ -10,14 +10,7 @@ async function bootstrap() {
   try {
     await app.start();
 
-    if (!app.isRunning()) {
-      throw new Error('Servidor não está rodando');
-    }
-
-    const userCount = await prisma.user.aggregate({
-      _count: true,
-    });
-    console.log(`📊 Total de usuários no banco: ${userCount._count}`);
+    if (!app.isRunning()) throw new Error('Servidor não está rodando');
 
     setupGracefulShutdown(app);
   } catch (error) {
