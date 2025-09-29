@@ -27,6 +27,18 @@ Restrições
 - SEMPRE especificar arquivos individualmente no `git add`
 - SEMPRE executar validação automática antes do commit
 
+Pré-validação de Testes (Obrigatória)
+
+- Antes de commitar ajustes ou novas rotas/funcionalidades, executar testes da entidade afetada:
+  1. Identificar a entidade/escopo afetado (ex.: users, gyms, check-ins)
+  2. Executar testes unitários focados no escopo:
+     - `npm run test:unit -- --testPathPattern ".*/src/.*(users|user).*\\.spec\\.ts$"`
+     - Substitua `(users|user)` pelo escopo real (ex.: `(gyms|gym)`, `(check-ins|checkin)`)
+  3. Executar testes E2E focados no escopo:
+     - `npm run test:e2e -- --testPathPattern ".*/tests/e2e/.*(users|user).*\\.spec\\.ts$"`
+  4. Somente prosseguir com o commit se TODOS os testes acima passarem
+  5. Em caso de falha, corrigir e rerodar os testes antes de tentar commitar novamente
+
 Entregáveis
 
 - Commits bem estruturados com mensagens claras
@@ -59,7 +71,7 @@ Fluxo
 3. Definir escopo quando relevante
 4. Escrever descrição clara em português
 5. VERIFICAR se precisa de múltiplos commits (ver seção "Identificação de Múltiplos Commits")
-6. Executar validação automática (formatação + linting)
+6. Executar validação automática (formatação + linting + testes da entidade)
 7. Executar git add com arquivos específicos
 8. MOSTRAR mensagem de commit para confirmação do usuário
 9. Fazer commit APENAS após confirmação
@@ -125,7 +137,11 @@ ANTES de fazer qualquer commit, SEMPRE executar:
 
 1. `npm run format` - Formata o código automaticamente
 2. `npm run lint` - Verifica e corrige erros de linting
-3. Se houver erros de linting que não podem ser corrigidos automaticamente, informar ao usuário
+3. Testes da entidade afetada (obrigatório para rotas/funcionalidades):
+   - Unit: `npm run test:unit -- --testPathPattern ".*/src/.*(entidade).*\\.spec\\.ts$"`
+   - E2E: `npm run test:e2e -- --testPathPattern ".*/tests/e2e/.*(entidade).*\\.spec\\.ts$"`
+   - Substituir `(entidade)` pelo escopo real (ex.: `users`, `gyms`)
+4. Se houver erros de linting ou testes falharem, informar ao usuário e NÃO prosseguir com commit
 
 Exemplo de fluxo completo:
 
