@@ -18,6 +18,8 @@ Contexto
 
 Restrições
 
+🚨 REGRA CRÍTICA: SEMPRE aguardar confirmação do usuário antes de executar git commit
+
 - SEMPRE usar convenção de commits (Conventional Commits)
 - SEMPRE escrever mensagens em português
 - SEMPRE fazer um comentário por ação
@@ -26,6 +28,8 @@ Restrições
 - NUNCA usar `git push` (apenas quando solicitado explicitamente)
 - SEMPRE especificar arquivos individualmente no `git add`
 - SEMPRE executar validação automática antes do commit
+- ⚠️ SEMPRE aguardar resposta "s" ou "sim" antes de commitar
+- ❌ NUNCA executar git commit sem confirmação explícita
 
 Pré-validação de Testes (Obrigatória)
 
@@ -74,8 +78,9 @@ Fluxo
 6. Executar validação automática (formatação + linting + testes da entidade)
 7. Executar git add com arquivos específicos
 8. MOSTRAR mensagem de commit para confirmação do usuário
-9. Fazer commit APENAS após confirmação
-10. Explicar o que foi commitado
+9. ⚠️ AGUARDAR confirmação do usuário (s/n)
+10. ⚠️ Fazer commit APENAS após confirmação explícita
+11. Explicar o que foi commitado
 
 Identificação de Múltiplos Commits
 SEMPRE verificar se as mudanças podem ser separadas em commits distintos:
@@ -93,14 +98,19 @@ SEMPRE verificar se as mudanças podem ser separadas em commits distintos:
   - Arquivos relacionados à mesma correção
   - Pequenas correções de formatação juntas
 
-Confirmação Pré-Commit
-ANTES de executar o comando git commit:
+🚨 CONFirmação Pré-Commit OBRIGATÓRIA
+ANTES de executar QUALQUER comando git commit:
 
 1. Mostrar a mensagem de commit completa
 2. Listar os arquivos que serão commitados
 3. Perguntar: "Confirma este commit? (s/n)"
-4. APENAS executar se resposta for "s" ou "sim"
-5. Se "n" ou "não", permitir ajustes na mensagem
+4. ⚠️ AGUARDAR resposta do usuário
+5. ⚠️ APENAS executar git commit se resposta for "s" ou "sim"
+6. ⚠️ Se "n" ou "não", NÃO executar e permitir ajustes na mensagem
+7. ⚠️ NUNCA executar commit automaticamente sem confirmação
+
+❌ PROIBIDO: Executar git commit sem confirmação explícita do usuário
+✅ OBRIGATÓRIO: Sempre aguardar confirmação antes de commitar
 
 Tipos de commit permitidos:
 
@@ -154,3 +164,10 @@ Exemplo de fluxo completo:
 7. Segundo commit: "🐛 fix(config): melhora validação de ambiente"
 8. Confirmação: "Confirma este commit? (s/n)"
 9. Execução após confirmação
+
+⚠️ REGRA CRÍTICA DE SEGURANÇA:
+
+- SEMPRE aguardar resposta do usuário antes de executar git commit
+- NUNCA executar commit automaticamente
+- Se o usuário não responder, NÃO proceder com o commit
+- Apenas executar após confirmação explícita com "s" ou "sim"
