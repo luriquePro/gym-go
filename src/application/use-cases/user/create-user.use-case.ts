@@ -1,6 +1,6 @@
 import { IHasher } from '@/application/interfaces/hasher.interface';
 import { IUserRepository } from '@/domain/repositories/user-repository.interface';
-import { AppError } from '@/shared/errors/AppError';
+import { AppError } from '@/shared/utils/app-error';
 import { CreateUserValidation } from '@/shared/validation/schemas/user.schema';
 import { ICreatedUserResponse } from '../../interfaces/user.interface';
 

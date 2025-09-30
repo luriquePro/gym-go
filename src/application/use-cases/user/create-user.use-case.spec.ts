@@ -1,7 +1,7 @@
 import { IHasher } from '@/application/interfaces/hasher.interface';
 import { CreateUserUseCase } from '@/application/use-cases/user/create-user.use-case';
 import { IUserRepository } from '@/domain/repositories/user-repository.interface';
-import { AppError } from '@/shared/errors/AppError';
+import { AppError } from '@/shared/utils/app-error';
 import { describe, expect, it, jest } from '@jest/globals';
 
 describe('CreateUserUseCase', () => {

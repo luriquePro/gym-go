@@ -1,4 +1,4 @@
-import { AppError } from '@/shared/errors/AppError';
+import { AppError } from '@/shared/utils/app-error';
 import { FastifyReply, FastifyRequest } from 'fastify';
 import { ZodError, ZodSchema } from 'zod';
 

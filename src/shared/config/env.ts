@@ -2,7 +2,7 @@ import { config } from 'dotenv';
 
 import { DEFAULT_VALUES } from '@/shared/config/constants';
 import { APP_AMBIENT, ENV_VALIDATIONS, NODE_ENV } from '@/shared/enum/env.enum';
-import { AppError } from '@/shared/errors/AppError';
+import { AppError } from '@/shared/utils/app-error';
 
 import { z } from 'zod';
 
