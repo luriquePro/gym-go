@@ -1,3 +1,5 @@
+type Context = Record<string, unknown> | Record<string, unknown>[];
+
 /**
  * Classe base para erros da aplicação
  * Fornece estrutura consistente para tratamento de erros
@@ -6,13 +8,13 @@ export class AppError extends Error {
   public readonly statusCode: number;
   public readonly isOperational: boolean;
   public readonly timestamp: Date;
-  public readonly context?: Record<string, unknown>;
+  public readonly context?: Context;
 
   constructor(
     message: string,
     statusCode: number = 500,
     isOperational: boolean = true,
-    context?: Record<string, unknown>,
+    context?: Context,
   ) {
     super(message);
 
@@ -20,7 +22,7 @@ export class AppError extends Error {
     this.statusCode = statusCode;
     this.isOperational = isOperational;
     this.timestamp = new Date();
-    this.context = context ?? {};
+    this.context = context ?? [];
 
     // Mantém o stack trace correto
     Error.captureStackTrace(this, this.constructor);
@@ -29,10 +31,7 @@ export class AppError extends Error {
   /**
    * Cria um erro de validação
    */
-  static validation(
-    message: string,
-    context?: Record<string, unknown>,
-  ): AppError {
+  static validation(message: string, context?: Context): AppError {
     return new AppError(message, 400, true, context);
   }
 
@@ -41,7 +40,7 @@ export class AppError extends Error {
    */
   static notFound(
     message: string = 'Recurso não encontrado',
-    context?: Record<string, unknown>,
+    context?: Context,
   ): AppError {
     return new AppError(message, 404, true, context);
   }
@@ -51,7 +50,7 @@ export class AppError extends Error {
    */
   static unauthorized(
     message: string = 'Não autorizado',
-    context?: Record<string, unknown>,
+    context?: Context,
   ): AppError {
     return new AppError(message, 401, true, context);
   }
@@ -61,7 +60,7 @@ export class AppError extends Error {
    */
   static forbidden(
     message: string = 'Acesso negado',
-    context?: Record<string, unknown>,
+    context?: Context,
   ): AppError {
     return new AppError(message, 403, true, context);
   }
@@ -69,10 +68,7 @@ export class AppError extends Error {
   /**
    * Cria um erro de conflito
    */
-  static conflict(
-    message: string,
-    context?: Record<string, unknown>,
-  ): AppError {
+  static conflict(message: string, context?: Context): AppError {
     return new AppError(message, 409, true, context);
   }
 
@@ -81,7 +77,7 @@ export class AppError extends Error {
    */
   static internal(
     message: string = 'Erro interno do servidor',
-    context?: Record<string, unknown>,
+    context?: Context,
   ): AppError {
     return new AppError(message, 500, false, context);
   }
