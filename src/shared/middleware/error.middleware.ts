@@ -1,6 +1,7 @@
-import { AppError } from '@/shared/errors/AppError';
+import { AppError } from '@/shared/utils/app-error';
 import { FastifyError, FastifyReply, FastifyRequest } from 'fastify';
 import { ApiResponseUtil } from '../utils/api-response.util';
+import { mapErrorDetails, mapExpectedErrors } from '../utils/error-mapper.util';
 
 /**
  * Middleware global de tratamento de erros do Fastify
@@ -208,6 +209,22 @@ export function errorHandler(
     );
   }
 
+  // Mapper para erros esperados (antes do fallback)
+  const mappedError = mapExpectedErrors(error);
+  if (mappedError) {
+    // Formata os detalhes de erro se existirem
+    const formattedDetails = mapErrorDetails(errorDetails);
+
+    return ApiResponseUtil.error(
+      reply,
+      mappedError.message,
+      mappedError.statusCode,
+      formattedDetails,
+    );
+  }
+
   // Erro interno do servidor (500) - fallback
-  return ApiResponseUtil.internalError(reply, error.message, errorDetails);
+  // Formata os detalhes de erro se existirem
+  const formattedDetails = mapErrorDetails(errorDetails);
+  return ApiResponseUtil.internalError(reply, error.message, formattedDetails);
 }
